@@ -28,6 +28,7 @@ export default function SocketDisplay() {
   }, [string, value]);
 
   const getCharacterStyle = (char, index) => {
+    if(string == value) return "text-green-500"
     if (index > value.length) return "text-gray-900"; // No style if not typed yet
     return char === value[index]
       ? "text-gray-300" 
