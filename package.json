@@ -1,0 +1,12 @@
+{
+    "name": "typing-practice",
+    "version": "1.0.0",
+    "description": "a small app to practice keyboard keys with socket",
+    "scripts": {
+        "start": "start /B \"typing-server\" npm run start --prefix typing-server && start /B \"Frontend\" npm run dev --prefix typing-client",
+        "installall": "npm install --prefix typing-server && npm install --prefix typing-client"
+    },
+    "devDependencies": {
+        "concurrently": "^7.0.0"
+    }
+}
