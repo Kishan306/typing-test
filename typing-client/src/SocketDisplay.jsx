@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { io } from "socket.io-client";
 
 const socket = io("http://localhost:5000");
@@ -11,15 +11,14 @@ export default function SocketDisplay() {
 
   useEffect(() => {
     socket.on("randomString", (string) => {
+      setIsMatched(false)
       setString(string);
       setValue("")
-      setIsMatched(false)
     });
 
     if(string == value){
         setScore(score => score + 1)
         setIsMatched(true)
-        setValue("")
         socket.emit('randomString')
     }
 
@@ -28,11 +27,22 @@ export default function SocketDisplay() {
     };
   }, [string, value]);
 
+  const getCharacterStyle = (char, index) => {
+    if (index > value.length) return "text-gray-900"; // No style if not typed yet
+    return char === value[index]
+      ? "text-gray-300" 
+      : "text-gray-900"; 
+  };
+
   return (
     <main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
       <div className="text-center">
-        <h1 className="mt-4 text-5xl font-semibold text-balance text-gray-900 sm:text-7xl tracking-wider">
-          {string}
+        <h1 className="mt-4 text-5xl font-semibold text-balance sm:text-7xl tracking-wider">
+          {string.split('').map((char, index)=> (
+            <span key={index} className={`${getCharacterStyle(char, index)}`}>
+              {char}
+            </span>
+          ))}
         </h1>
 
         {isMatched ? <p className="text-green-500 italic mt-8 text-lg">Matched!!!</p> : <p className="text-amber-500 italic mt-8 text-lg">Matching...</p>}
