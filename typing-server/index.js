@@ -18,8 +18,8 @@ app.use(cors())
 app.use(express.static("public"));
 
 const generateRandomString = (length) => {
-    // const chars = 'abcdefghijklmnopqrstuvwxyz';
-    const chars = "poi" //change this to include any character you want, uncomment above line if you want all 26. 
+    const chars = 'abcdefghijklmnopqrstuvwxyz';
+    //const chars = "poi" //change this to include any character you want, uncomment above line if you want all 26. 
     let result = '';
     for (let i = 0; i < length; i++) {
       const randomIndex = Math.floor(Math.random() * chars.length);
