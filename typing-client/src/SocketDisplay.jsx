@@ -10,7 +10,7 @@ export default function SocketDisplay() {
   const [score, setScore] = useState(0);
   const [isMatched, setIsMatched] = useState(false);
 
-  const [isPause, setIsPause] = useState(true);
+  const [isPause, setIsPause] = useState(false);
 
   useEffect(() => {
     if (!isPause) {
