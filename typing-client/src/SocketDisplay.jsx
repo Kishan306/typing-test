@@ -55,16 +55,6 @@ export default function SocketDisplay() {
       </button>
 
       <div className="text-center">
-        {/* { string ? (
-          <h1 className="mt-4 text-5xl font-semibold text-balance sm:text-7xl tracking-wider">
-          {string.split('').map((char, index)=> (
-            <span key={index} className={`${getCharacterStyle(char, index)}`}>
-              {char}
-            </span>
-          ))}
-        </h1>
-        ) : <h1 className="mt-4 text-5xl font-semibold text-balance sm:text-7xl">Wait for the string</h1>} */}
-
         {isPause ? (
           <h1 className="mt-4 text-5xl font-semibold text-red-500 text-balance sm:text-7xl">
             Test is paused
@@ -73,7 +63,7 @@ export default function SocketDisplay() {
           <h1 className="mt-4 text-5xl font-semibold text-balance sm:text-7xl tracking-wider">
             {string.split("").map((char, index) => (
               <span key={index} className={`${getCharacterStyle(char, index)}`}>
-                {char}
+                {char === " " ? "_" : char}
               </span>
             ))}
           </h1>
